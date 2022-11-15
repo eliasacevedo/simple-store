@@ -6,8 +6,20 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  //Capture order to complete payment
-    const { orderID } = req.body // Remember add type here
+    const { orderID } = req.body
+
+    if (!orderID) {
+        res.status(400).end('missing orderID')
+    }
+    try {
+        const response = await captureOrder(orderID)
+        res.status(200).json({ ...response.result })
+    } catch (error) {
+        res.status(400).end(error)
+    }
+}
+
+async function captureOrder(orderID: string) {
     const PaypalClient = client()
     const request = new paypal.orders.OrdersCaptureRequest(orderID)
     request.requestBody({
@@ -20,10 +32,10 @@ export default async function handle(
     })
 
     const response = await PaypalClient.execute(request)
+
     if (!response) {
-        res.status(500)
+        throw `error capturing order: ${orderID}`
     }
 
-    // Remember store locally order details
-    res.json({ ...response.result })
+    return response
 }
