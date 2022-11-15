@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function Home() {
+export default function Products() {
   return (
     <div>
       <Head>
@@ -8,8 +8,7 @@ export default function Home() {
         <meta name="description" content="Simple Store (e-commerce)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-3xl font-bold underline">Simple Store</h1>
-      <button className="btn">Test</button>
+      <h1 className="text-3xl font-bold underline">List of products</h1>
     </div>
   )
 }
