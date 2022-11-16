@@ -1,9 +1,16 @@
-import { Product } from "../../core/product";
+import axios from "axios";
+import { CheckoutItem } from "../../core/checkout-item";
+import { ShoppingCartItem } from "../../core/shopping-cart-item";
+import { PATH_CHECKOUT_LIST, PATH_PRODUCTS_SUM } from "../constants";
 
-let products: Product[] = []
+let products: ShoppingCartItem[] = []
 const localStorageId = 'simple-store-shopping-cart'
 
-function getProductsFromLocalStorage() {
+function refreshProductsFromLocalStorage() {
+    if(typeof window === 'undefined') {
+        return
+    }
+
     const result = localStorage.getItem(localStorageId)
     if(!result) {
         localStorage.setItem(localStorageId, '[]')
@@ -15,20 +22,23 @@ function getProductsFromLocalStorage() {
 }
 
 function saveProductsInLocalStorage() {
+    if(typeof window === 'undefined') {
+        return
+    }
     localStorage.setItem(localStorageId, JSON.stringify(products))
 }
 
 function getProduct(id: string) {
-    return products.find(product => product.id === id)
+    return products.find(product => product.productId === id)
 }
 
-function addProduct(product: Product) {
+function addProduct(product: ShoppingCartItem) {
     products.push(product)
     saveProductsInLocalStorage()
 }
 
 function deleteProduct(id: string) {
-    products = products.filter(n => id !== n.id)
+    products = products.filter(n => id !== n.productId)
     saveProductsInLocalStorage()
 }
 
@@ -37,10 +47,16 @@ function deleteAllProducts() {
     saveProductsInLocalStorage()
 }
 
-function getSumValueProducts() {
-    let result = 0
-    products.forEach(product => result += product.amount)
-    return result
+async function getSumValueProducts() {
+    return await axios.post<number>(PATH_PRODUCTS_SUM, products)    
+}
+
+async function getCheckoutItems() {
+    return await axios.post<CheckoutItem[]>(PATH_CHECKOUT_LIST, products)
+}
+
+function getShoppingCartProductIdList() {
+    return products.map(product => product.productId)
 }
 
 export {
@@ -49,6 +65,8 @@ export {
     addProduct,
     deleteProduct,
     deleteAllProducts,
-    getProductsFromLocalStorage,
-    getSumValueProducts
+    refreshProductsFromLocalStorage,
+    getSumValueProducts,
+    getCheckoutItems,
+    getShoppingCartProductIdList
 }

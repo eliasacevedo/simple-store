@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default function Products() {
+export default function ProductsPage() {
   return (
     <div>
       <Head>

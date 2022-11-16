@@ -6,8 +6,7 @@ import {
 
 import useOrders from '../components/orders/useOrders'
 
-export default function Home() {
-  const { createPayPalOrder, onApprove, options, fundingSource } = useOrders()
+export default function HomePage() {
 
   return (
     <div >
@@ -17,21 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <PayPalScriptProvider
-          options={options}
-        >
-          <PayPalButtons
-            style={{
-              color: 'gold',
-              shape: 'rect',
-              label: 'pay',
-              height: 50,
-            }}
-            fundingSource={fundingSource}
-            createOrder={createPayPalOrder}
-            onApprove={onApprove}
-          />
-        </PayPalScriptProvider>
+        
       </main>
     </div>
   )
