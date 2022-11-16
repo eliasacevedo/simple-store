@@ -1,3 +1,5 @@
+import useProducts from "../../components/products/useProducts"
+
 interface StaticProps{
     params: any
 }
@@ -7,29 +9,21 @@ interface ProductProps{
 }
 
 export default function Product({id}: ProductProps) {
+    const { productQuery } = useProducts(id)
+    const { data, error, status } = productQuery
   return (
     <>
         <p>Product {id}</p>
+        {data?.data.name}
     </>
   )
 }
 
 export async function getStaticPaths() {
-  // Return a list of possible value for id
-  return { 
-    paths: [
-        {
-            params: {
-                id: '1'
-            }
-        },
-        {
-            params: {
-                id: '2'
-            }
-        },
-    ], 
-    fallback: false }
+    return { 
+        paths: [], 
+        fallback: true 
+    }
 }
 
 export async function getStaticProps({ params }: StaticProps) {

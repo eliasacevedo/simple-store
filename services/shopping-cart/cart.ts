@@ -59,6 +59,12 @@ function getShoppingCartProductIdList() {
     return products.map(product => product.productId)
 }
 
+function getQuantityOfProducts() {
+    let total = 0
+    products.forEach(product => total += product.quantity)
+    return total
+}
+
 export {
     products,
     getProduct,
@@ -68,5 +74,6 @@ export {
     refreshProductsFromLocalStorage,
     getSumValueProducts,
     getCheckoutItems,
-    getShoppingCartProductIdList
+    getShoppingCartProductIdList,
+    getQuantityOfProducts
 }
