@@ -4,6 +4,8 @@ import { Product } from '../../../core/product'
 import _products from '../../../data/products.json'
 import { Products } from './sum'
 
+export const initialQuantityPerPage = 3
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Product[]>
@@ -15,7 +17,7 @@ export default function handler(
     }
 
     if (!quantity) {
-        quantity = "3"
+        quantity = initialQuantityPerPage.toString()
     }
 
     if (typeof page !== 'string') {
