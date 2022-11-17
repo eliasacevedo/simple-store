@@ -10,9 +10,14 @@ export default function useCheckout() {
     const checkoutItemsQuery = useQuery<AxiosResponse<CheckoutItem[]>, AxiosError>(`products-${listIdsString}`, async () => await getCheckoutItems())
     const totalPaymentQuery = useQuery<AxiosResponse<number>, AxiosError>(`shopping-cart-items-${listIdsString}`, async () => await getSumValueProducts()) 
 
+    const addProductToShoppingCart = () => {
+
+    }
+
     return {
         checkoutItemsQuery,
         totalPaymentQuery,
-        quantity
+        quantity,
+        addProductToShoppingCart
     }
 }

@@ -1,3 +1,4 @@
+import ProductDetails from "../../components/products/product-details"
 import useProducts from "../../components/products/useProducts"
 
 interface StaticProps{
@@ -10,12 +11,15 @@ interface ProductProps{
 
 export default function Product({id}: ProductProps) {
     const { productQuery } = useProducts(id)
-    const { data, error, status } = productQuery
+    const { data, error, isLoading } = productQuery
+    const product = data?.data
   return (
     <>
-        <p>Product {id}</p>
-        {data?.data.name}
-    </>
+        {
+            isLoading ? <progress className="progress w-100"></progress> : <></>
+        }
+        <ProductDetails {...product} />
+    </> 
   )
 }
 

@@ -7,7 +7,7 @@ export default function ListProducts() {
         <div className="list-items">
             <div className="items flex mb-6">
             {
-                itemsQuery.isLoading ? <progress className="progress w-100"></progress> : ''
+                itemsQuery.isLoading ? <progress className="progress w-100"></progress> : <></>
             }
             {
                 itemsQuery.data?.data.map(item => 

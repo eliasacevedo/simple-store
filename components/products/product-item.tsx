@@ -9,8 +9,7 @@ export default function ProductItem(product: Product) {
             <figure className="h-60"><img className="w-full" src={`data:image/png;base64,${product.photo}`} alt={product.name} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{product.name}</h2>
-                <p>{product.description}</p>
-                <p>Price: ${product.amount}</p>
+                <p>${product.amount}</p>
                 <div className="card-actions justify-end">
                     <button onClick={onClickBuyButton} className="btn btn-primary">Add shopping cart</button>
                 </div>
