@@ -2,13 +2,11 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js"
 import CheckoutItemComponent from "../../components/checkout/checkout-item"
 import useCheckout from "../../components/checkout/useCheckout"
 import useOrders from "../../components/orders/useOrders"
-import { refreshProductsFromLocalStorage } from "../../services/shopping-cart/cart"
 
 export default function CheckoutPage() {
-    refreshProductsFromLocalStorage()
     
     const { checkoutItemsQuery, totalPaymentQuery } = useCheckout()
-    const { createPayPalOrder, onApprove, options, fundingSource, capturePayment } = useOrders(totalPaymentQuery.data?.data)
+    const { createPayPalOrder, onApprove, options, fundingSource } = useOrders(totalPaymentQuery.data?.data)
     
     return (
         <div>

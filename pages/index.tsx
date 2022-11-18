@@ -1,13 +1,7 @@
 import Head from 'next/head'
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-} from '@paypal/react-paypal-js'
-
-import useOrders from '../components/orders/useOrders'
 
 export default function HomePage() {
-
+  
   return (
     <div >
       <Head>

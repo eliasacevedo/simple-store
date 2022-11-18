@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react"
+import { ShoppingCartContext } from "../../context/shopping-cart"
 import useCheckout from "../checkout/useCheckout"
 import Footer from "./footer"
 import Header from "./header"

@@ -11,14 +11,15 @@ interface ProductProps{
 
 export default function Product({id}: ProductProps) {
     const { productQuery } = useProducts(id)
-    const { data, error, isLoading } = productQuery
+    const { data, isLoading } = productQuery
     const product = data?.data
   return (
     <>
         {
-            isLoading ? <progress className="progress w-100"></progress> : <></>
+            isLoading ? 
+            (<progress className="progress w-100"></progress>) : 
+            product ? <ProductDetails {...product} /> : <></>
         }
-        <ProductDetails {...product} />
     </> 
   )
 }

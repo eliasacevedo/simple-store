@@ -22,8 +22,6 @@ export default function useListProducts() {
     const shouldNextButtonActive = actualPage < quantityPages
     const shouldPreviousButtonActive = actualPage > 1
 
-    
-
     const onClickNextButton = () => {
         const nextPage = actualPage + 1
         setActualPage(nextPage)
