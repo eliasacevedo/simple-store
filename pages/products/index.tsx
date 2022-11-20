@@ -3,14 +3,14 @@ import ListProducts from '../../components/products/list-products'
 
 export default function ProductsPage() {
   return (
-    <div>
+    <div className='w-full'>
       <Head>
         <title>Simple Store</title>
         <meta name="description" content="Simple Store (e-commerce)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="products">
-        <h1 className="text-3xl font-bold mb-4">List of products</h1>
+        <h1 className="text-xl font-bold mb-4">List of products</h1>
         <div className="list-products">
           <ListProducts />
         </div>

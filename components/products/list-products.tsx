@@ -4,15 +4,15 @@ import useListProducts from "./useListProducts";
 export default function ListProducts() {
     const { actualPage, itemsQuery, onClickNextButton, onClickPreviousButton, shouldNextButtonActive, shouldPreviousButtonActive } = useListProducts()
     return (
-        <div className="list-items">
-            <div className="items flex mb-6">
+        <div className="list-items w-full">
+            <div className="items flex mb-6 flex-wrap w-full">
             {
                 itemsQuery.isLoading ? <progress className="progress w-100"></progress> : <></>
             }
             {
                 itemsQuery.data?.data?.map(item => 
                     (
-                        <div key={item.id} className="mr-3">
+                        <div key={item.id} className="mr-3 mb-5 w-full md:w-96">
                             <ProductItem {...item} />
                         </div>
                     )

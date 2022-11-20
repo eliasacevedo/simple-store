@@ -9,21 +9,25 @@ export default function CheckoutPage() {
     const { createPayPalOrder, onApprove, options, fundingSource } = useOrders(totalPaymentQuery.data?.data)
     
     return (
-        <div>
+        <div className="w-full">
             <div className="header">
-                <h2 className="header">Shopping cart items</h2>
+                <h2 className="text-xl font-bold mb-4">Shopping cart items</h2>
             </div>
-            <main className="content">
-                <div className="products-list">
+            <main className="content md:flex">
+                <div className="products-list w-full md:w-4/5 flex flex-wrap">
                 {
-                    checkoutItemsQuery.isLoading ?? 'Loading...'
+                    checkoutItemsQuery.isLoading ? <progress className="progress w-4/5"></progress> : ''
                 }
                 {
-                    checkoutItemsQuery.data?.data.map(product => <CheckoutItemComponent key={product.product.id} {...product}/>)
+                    checkoutItemsQuery.data?.data.map(product => (
+                        <div key={product.product.id} className="mr-4 h-52 mb-4 w-full md:w-96">
+                            <CheckoutItemComponent  {...product}/>
+                        </div>
+                    ))
                 }
                 </div>
-                <div className="summary">
-                    <h3 className="summary-text">Total Invoice: {totalPaymentQuery.data?.data.toFixed(2)}</h3>
+                <div className="summary w-full md:w-1/5">
+                    <h3 className="summary-text">Total Invoice: ${totalPaymentQuery.data?.data.toFixed(2)}</h3>
                     <PayPalScriptProvider
                         options={options}
                     >
