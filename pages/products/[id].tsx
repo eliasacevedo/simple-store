@@ -32,7 +32,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: StaticProps) {
-  // Fetch necessary data for the blog post using params.id
     return {
         props: {
             id: params.id

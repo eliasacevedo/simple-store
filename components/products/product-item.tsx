@@ -12,9 +12,9 @@ export default function ProductItem(product: Product) {
                 <p>${product.amount}</p>
                 <div className="card-actions flex-nowrap">
                     <Link href={`/products/${product.id}`}>
-                        <button className="btn btn-secundary">More details</button>
+                        <button className="btn btn-secundary w-32">More details</button>
                     </Link>
-                    <button onClick={onClickBuyButton} className="btn btn-primary">Add shopping cart</button>
+                    <button onClick={onClickBuyButton} className="btn btn-primary w-32">Add shopping cart</button>
                 </div>
             </div>
         </div>
