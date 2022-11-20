@@ -5,7 +5,7 @@ export default function ProductsPage() {
   return (
     <div className='w-full'>
       <Head>
-        <title>Simple Store</title>
+        <title>Products - Simple Store</title>
         <meta name="description" content="Simple Store (e-commerce)" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

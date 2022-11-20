@@ -1,4 +1,5 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js"
+import Head from "next/head"
 import CheckoutItemComponent from "../../components/checkout/checkout-item"
 import useCheckout from "../../components/checkout/useCheckout"
 import useOrders from "../../components/orders/useOrders"
@@ -10,6 +11,11 @@ export default function CheckoutPage() {
     
     return (
         <div className="w-full">
+             <Head>
+                <title>Checkout - Simple Store</title>
+                <meta name="description" content="Simple Store (e-commerce)" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className="header">
                 <h2 className="text-xl font-bold mb-4">Shopping cart items</h2>
             </div>

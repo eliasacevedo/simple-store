@@ -1,3 +1,4 @@
+import Head from "next/head"
 import ProductDetails from "../../components/products/product-details"
 import useProducts from "../../components/products/useProducts"
 
@@ -15,6 +16,11 @@ export default function Product({id}: ProductProps) {
     const product = data?.data
   return (
     <>
+        <Head>
+            <title>Products - Simple Store</title>
+            <meta name="description" content="Simple Store (e-commerce)" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
         {
             isLoading ? 
             (<progress className="progress w-100"></progress>) : 

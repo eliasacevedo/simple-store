@@ -4,7 +4,7 @@ import useListProducts from "./useListProducts";
 export default function ListProducts() {
     const { actualPage, itemsQuery, onClickNextButton, onClickPreviousButton, shouldNextButtonActive, shouldPreviousButtonActive } = useListProducts()
     return (
-        <div className="list-items w-full">
+        <div className="list-items w-full flex flex-col items-center md:items-start">
             <div className="items flex mb-6 flex-wrap w-full">
             {
                 itemsQuery.isLoading ? <progress className="progress w-100"></progress> : <></>
@@ -17,6 +17,9 @@ export default function ListProducts() {
                         </div>
                     )
                 )   
+            }
+            {
+                itemsQuery.data?.data.length == 0 ? 'No items' : ''
             }
             </div>
             <div className="btn-group">
